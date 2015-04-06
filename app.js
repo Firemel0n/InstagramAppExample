@@ -4,6 +4,17 @@ var http = require('http');
 var path = require('path');
 var handlebars = require('express3-handlebars');
 var app = express();
+
+//load environment variables
+var dotenv = require('dotenv');
+dotenv.load();
+
+//add instagram api
+var ig = require('instagram-node-lib');
+ig.set('client_id', process.env.instagram_client_id);
+ig.set('client_secret', process.env.instagram_client_secret);
+exports.ig = ig;
+
 //route for hashtag
 var hashtag = require('./routes/hashtag');
 var index = require('./routes/index');
